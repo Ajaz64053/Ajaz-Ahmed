@@ -21,3 +21,50 @@ df
 
 #The describe() method returns description of the data in the DataFrame.
 df.describe()
+
+
+
+#define the database name and table name 
+database_name = "airports.sqlite"
+table_name = "airports"
+
+#the first five row of the data 
+df.head(5)
+
+#data types of all the columns
+print(df.dtypes)
+
+#define SQLite data types for each column
+column_types = {
+    "column_1": "BIGINT",
+    "column_2":"TEXT",
+    "column_3":"TEXT",
+    "column_4":"TEXT",
+    "column_5":"VARCHAR",
+    "column_6":"TEXT",
+    "column_7":"FLOAT",
+    "column_8":"FLOAT",
+    "column_9":"TEXT",
+    "column_10":"FLOAT",
+    "column_11":"TEXT",
+    "column_12":"TEXT",
+    "geo_punkt":"TEXT"
+    
+}
+
+#create an SQLite engine 
+engine= create_engine(f"sqlite:///{database_name}")
+
+
+#write data to SQLite database 
+df.to_sql(table_name, engine, if_exists="replace",index=False)
+
+
+
+
+
+
+
+
+
+
